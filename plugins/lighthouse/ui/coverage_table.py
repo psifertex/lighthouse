@@ -1057,7 +1057,7 @@ class CoverageTableModel(QtCore.QAbstractTableModel):
             sorted_functions = sorted(
                 itervalues(self._visible_metadata),
                 key=attrgetter(sort_field),
-                reverse=sort_order
+                reverse=sort_order.value if QtCore.__version_info__ >= (6, 4, 0) else sort_order
             )
 
         # sort the table entries by a function coverage attribute
@@ -1065,7 +1065,7 @@ class CoverageTableModel(QtCore.QAbstractTableModel):
             sorted_functions = sorted(
                 itervalues(self._visible_coverage),
                 key=attrgetter(sort_field),
-                reverse=sort_order
+                reverse=sort_order.value if QtCore.__version_info__ >= (6, 4, 0) else sort_order
             )
 
             #

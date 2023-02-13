@@ -239,7 +239,8 @@ class LighthouseCore(object):
             warn_errors(errors)
             return
 
-        disassembler.replace_wait_box("Selecting coverage...")
+        if QtCore.__version_info__ < (6, 3, 0):
+            disassembler.replace_wait_box("Selecting coverage...")
         lctx.director.select_coverage(created_coverage[0].name)
         disassembler.hide_wait_box()
 
